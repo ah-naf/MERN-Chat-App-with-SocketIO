@@ -10,7 +10,7 @@ interface InitialStateType {
 }
 
 export const asyncChat = createAsyncThunk("chat/asyncChat", async () => {
-  const res = await fetch("https://mern-chat-app-socketio.herokuapp.com/api/chat/", {
+  const res = await fetch("http://localhost:5000/api/chat/", {
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
@@ -33,7 +33,7 @@ export const asyncChatCreate = createAsyncThunk(
   }) => {
     const memberId = groupMember.map((item) => item._id);
 
-    const res = await fetch("https://mern-chat-app-socketio.herokuapp.com/api/chat/group", {
+    const res = await fetch("http://localhost:5000/api/chat/group", {
       method: "POST",
       credentials: "include",
       headers: {
@@ -52,7 +52,7 @@ export const asyncChatSingleCreate = createAsyncThunk(
   "chat/asyncChatSingleCreate",
   async (userId: string) => {
 
-    const res = await fetch("https://mern-chat-app-socketio.herokuapp.com/api/chat/", {
+    const res = await fetch("http://localhost:5000/api/chat/", {
       method: "POST",
       credentials: "include",
       headers: {
@@ -71,7 +71,7 @@ export const asyncSingleChatGet = createAsyncThunk(
   "chat/asyncSingleChatGet",
   async (id: string) => {
     const func1 = async () => {
-      const res = await fetch(`https://mern-chat-app-socketio.herokuapp.com/api/chat/${id}`, {
+      const res = await fetch(`http://localhost:5000/api/chat/${id}`, {
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
@@ -82,7 +82,7 @@ export const asyncSingleChatGet = createAsyncThunk(
     };
 
     const func2 = async () => {
-      const res = await fetch(`https://mern-chat-app-socketio.herokuapp.com/api/message/${id}`, {
+      const res = await fetch(`http://localhost:5000/api/message/${id}`, {
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
@@ -100,7 +100,7 @@ export const asyncSingleChatGet = createAsyncThunk(
 export const asyncMessageSend = createAsyncThunk(
   "chat/asyncMessageSend",
   async ({ content, chatId }: { content: string; chatId: string }) => {
-    const res = await fetch("https://mern-chat-app-socketio.herokuapp.com/api/message", {
+    const res = await fetch("http://localhost:5000/api/message", {
       method: "POST",
       credentials: "include",
       headers: {

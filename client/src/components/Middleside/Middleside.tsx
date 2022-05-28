@@ -41,7 +41,7 @@ export default function Middleside() {
 
   useEffect(() => {
     if (!socket && curConversation) {
-      setSocket(io("https://mern-chat-app-socketio.herokuapp.com/"));
+      setSocket(io("http://localhost:5000/"));
     }
     if (socket) {
       socket.emit("join-room", curConversation?._id);

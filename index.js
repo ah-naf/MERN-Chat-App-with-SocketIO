@@ -11,7 +11,7 @@ const app = express();
 
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: "https://mern-chat-app-socketio.herokuapp.com/",
+  cors: "http://localhost:3000",
 });
 
 const PORT = process.env.PORT || 5000;
@@ -24,7 +24,7 @@ mongoose
   .then(() => console.log("Conntected To MongoDB"));
 
 app.use(cookieParser());
-app.use(cors({ origin: "https://mern-chat-app-socketio.herokuapp.com/", credentials: true }));
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 
 if (process.env.NODE_ENV === "production") {

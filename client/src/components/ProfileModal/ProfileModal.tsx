@@ -16,7 +16,7 @@ export default function ProfileModal() {
   };
 
   const editHandler = async () => {
-    const res = await fetch(`https://mern-chat-app-socketio.herokuapp.com/api/auth/${user._id}`, {
+    const res = await fetch(`http://localhost:5000/api/auth/${user._id}`, {
       method: "PUT",
       credentials: "include",
       headers: {
@@ -36,7 +36,7 @@ export default function ProfileModal() {
     const files = e.target.files as FileList;
     const formData = new FormData();
     formData.append("image", files[0]);
-    const res = await fetch(`https://mern-chat-app-socketio.herokuapp.com/api/auth/${user._id}`, {
+    const res = await fetch(`http://localhost:5000/api/auth/${user._id}`, {
       method: "POST",
       credentials: "include",
       body: formData,
@@ -113,7 +113,7 @@ export default function ProfileModal() {
                 type="text"
                 className="w-full bg-gray-100 p-2 rounded-lg outline-none border-none mt-1 cursor-not-allowed text-gray-700"
                 disabled
-                value={"@ahnaf"}
+                value={'@'+user.username}
               />
             </div>
           </div>

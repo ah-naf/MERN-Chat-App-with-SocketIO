@@ -11,7 +11,7 @@ export default function Register() {
   const navigate = useNavigate()
 
   const handleClick = async () => {
-    const res = await fetch("https://mern-chat-app-socketio.herokuapp.com/api/auth/register", {
+    const res = await fetch("http://localhost:5000/api/auth/register", {
       method: "POST",
       credentials: 'include',
       headers: {

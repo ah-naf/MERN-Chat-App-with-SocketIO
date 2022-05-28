@@ -15,28 +15,31 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const getUser = async () => {
-      const res = await fetch("http://localhost:5000/api/auth", {
-        credentials: "include",
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        document.cookie.split(";").forEach((c) => {
-          document.cookie = c
-            .replace(/^ +/, "")
-            .replace(
-              /=.*/,
-              "=;expires=" + new Date().toUTCString() + ";path=/"
-            );
+    if(!user._id) {
+      const getUser = async () => {
+        const res = await fetch("http://localhost:5000/api/auth", {
+          credentials: "include",
         });
-        navigate("/login", { replace: true });
-      } else {
-        dispatch(initUser(data));
-        dispatch(asyncChat() as any)
-      }
-    };
-    getUser();
-  }, [dispatch, navigate]);
+        const data = await res.json();
+        console.log(res, data);
+        if (!res.ok) {
+          document.cookie.split(";").forEach((c) => {
+            document.cookie = c
+              .replace(/^ +/, "")
+              .replace(
+                /=.*/,
+                "=;expires=" + new Date().toUTCString() + ";path=/"
+              );
+          });
+          // navigate("/login", { replace: true });
+        } else {
+          dispatch(initUser(data));
+          dispatch(asyncChat() as any);
+        }
+      };
+      getUser();
+    }
+  }, [dispatch, navigate, user]);
 
   return (
     <Routes>
