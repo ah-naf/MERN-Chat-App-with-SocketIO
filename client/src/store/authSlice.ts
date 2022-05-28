@@ -7,7 +7,7 @@ interface InitialStateType {
 }
 
 export const asyncLogout = createAsyncThunk("auth/asyncLogout", () => {
-  fetch("http://localhost:5000/api/auth/logout", {
+  fetch("https://mern-chat-app-socketio.herokuapp.com/api/auth/logout", {
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export const asyncLogout = createAsyncThunk("auth/asyncLogout", () => {
 
 export const asyncUserSearch = createAsyncThunk("auth/asyncUserSearch", async (search: string) => {
   const res = await fetch(
-    `http://localhost:5000/api/search?username=${search}`,
+    `https://mern-chat-app-socketio.herokuapp.com/api/search?username=${search}`,
     {
       credentials: "include",
       headers: {
